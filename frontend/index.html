@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deal Size Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <header class="header">
+            <h1>Deal Size Predictor</h1>
+            <p>
+                Predict Deal Size using Machine Learning!
+                Classify Dealsize as multiclass from low to high value.
+            </p>
+        </header>
+
+        <main>
+
+            <form id="prediction-form">
+
+                <div class="form-group">
+                    <label for="quantity">Quantity Ordered</label>
+                    <input
+                        type="range"
+                        id="quantity"
+                        name="QUANTITYORDERED"
+                        min="1"
+                        max="97"
+                        value="35"
+                    >
+                    <span id="quantity-value">35</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Unit Price</label>
+                    <input
+                        type="number"
+                        id="price"
+                        name="PRICEEACH"
+                        min="20"
+                        max="300"
+                        value="95"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="days">Days Since Last Order</label>
+                    <input
+                        type="range"
+                        id="days"
+                        name="DAYS_SINCE_LASTORDER"
+                        min="42"
+                        max="3562"
+                        value="3184"
+                    >
+                    <span id="days-value">3184</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="msrp">Manufacturing Selling Retail Price</label>
+                    <input
+                        type="range"
+                        id="msrp"
+                        name="MSRP"
+                        min="33"
+                        max="214"
+                        value="99"
+                    >
+                    <span id="msrp-value">99</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="line-number">Order Line Number</label>
+                    <input
+                        type="range"
+                        id="line-number"
+                        name="ORDERLINENUMBER"
+                        min="1"
+                        max="18"
+                        value="6"
+                    >
+                    <span id="line-number-value">6</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-line">AutoMotive Type</label>
+                    <select id="product-line" name="PRODUCTLINE">
+                        <option value="Motorcycles">Motorcycles</option>
+                        <option value="Classic Cars">Classic Cars</option>
+                        <option value="Trucks and Buses">Trucks and Buses</option>
+                        <option value="Vintage Cars">Vintage Cars</option>
+                        <option value="Planes">Planes</option>
+                        <option value="Ships">Ships</option>
+                        <option value="Trains">Trains</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" name="COUNTRY">
+                        <option value="USA">USA</option>
+                        <option value="France">France</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Finland">Finland</option>
+                        <option value="Austria">Austria</option>
+                        <option value="UK">UK</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Ireland">Ireland</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-date">Order Date</label>
+                    <input
+                        type="date"
+                        id="order-date"
+                        name="ORDERDATE"
+                    >
+                </div>
+
+                <button type="submit" id="predict-button">
+                    Predict
+                </button>
+
+            </form>
+
+            <section class="input-section">
+                <h2>Input Sent to the Pipeline</h2>
+
+                <div class="table-wrapper">
+                    <table id="input-table">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="input-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="result-box" class="result-box hidden">
+                <h2>Prediction Result</h2>
+
+                <div id="prediction"></div>
+
+                <p id="confidence"></p>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

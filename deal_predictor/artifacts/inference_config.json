@@ -1,0 +1,15 @@
+{
+  "large_class_index": 2,
+  "large_threshold": 0.5,
+  "required_input_columns": [
+    "QUANTITYORDERED",
+    "PRICEEACH",
+    "ORDERLINENUMBER",
+    "DAYS_SINCE_LASTORDER",
+    "MSRP",
+    "ORDERDATE",
+    "PRODUCTLINE",
+    "COUNTRY"
+  ],
+  "date_format": "%d/%m/%Y"
+}
