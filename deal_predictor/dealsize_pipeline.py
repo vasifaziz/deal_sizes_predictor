@@ -273,6 +273,16 @@ def load_pipeline() -> tuple[Pipeline, dict]:
 
     model = joblib.load(find_artifact("dealsize_pipeline.pkl"))
 
+    # scikit-learn 1.8+ removed LogisticRegression.multi_class from newly
+    # created estimators, but older pickles can still expect it during
+    # predict_proba().
+    if isinstance(model, Pipeline) and "model" in model.named_steps:
+        estimator = model.named_steps["model"]
+        if isinstance(estimator, LogisticRegression) and not hasattr(
+            estimator, "multi_class"
+        ):
+            estimator.multi_class = "auto"
+
     with open(find_artifact("inference_config.json")) as f:
         config = json.load(f)
 
