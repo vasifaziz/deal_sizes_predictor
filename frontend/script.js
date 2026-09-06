@@ -11,7 +11,7 @@ const API_BASE_URL =
     (window.location.protocol === "http:" &&
     window.location.port === "8000"
         ? window.location.origin
-        : "http://127.0.0.1:8000");
+        : "dealsizespredictor-production.up.railway.app");
 
 const rangeInputs = [
     ["quantity", "quantity-value"],
